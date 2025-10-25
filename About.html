@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+      <style>
+/* 1. CSS Variables and Basic Reset */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --background-color: #f8f9fa;
+    --text-color: #212529;
+    --card-bg: #ffffff;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Dark theme variables */
+body.dark-theme {
+    --background-color: #121212;
+    --text-color: #f8f9fa;
+    --card-bg: #1e1e1e;
+    --box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* 2. General Body and Typography */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 3. Header and Navigation */
+.site-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+/* 4. Main Content Sections */
+.hero {
+    text-align: center;
+    padding: 60px 0;
+}
+
+.features {
+    padding: 40px 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile-first: 1 column */
+    gap: 20px;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* 5. Footer */
+.site-footer {
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    border-top: 1px solid var(--secondary-color);
+}
+
+/* 6. Utility and Interactivity */
+.theme-button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+}
+
+/* 7. Responsive Design (Mobile-First) */
+@media (min-width: 768px) {
+    .grid {
+        /* On screens wider than 768px, use 3 columns */
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+</style>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="logo">About</h1>
+            <button id="theme-toggle" class="theme-button">Toggle Theme 🌙</button>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <section class="hero">
+            <div class="container">
+                <h2>Welcome to a Modern Web Experience</h2>
+                <p>This is a clean, responsive template built with best practices.</p>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container grid">
+                <div class="card">
+                    <h3>Feature One</h3>
+                    <p>Built with semantic HTML for better accessibility and SEO.</p>
+                </div>
+                <div class="card">
+                    <h3>Feature Two</h3>
+                    <p>Styled with modern CSS using variables and Flexbox/Grid.</p>
+                </div>
+                <div class="card">
+                    <h3>Feature Three</h3>
+                    <p>Enhanced with unobtrusive JavaScript for interactivity.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 MySite. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>// Wait for the HTML document to be fully loaded before running the script
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Select the button and the body element from the DOM
+    const themeToggleButton = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // Add a click event listener to the button
+    themeToggleButton.addEventListener('click', () => {
+        // Toggle the 'dark-theme' class on the body element
+        body.classList.toggle('dark-theme');
+
+        // Optional: Update button text/icon based on the theme
+        if (body.classList.contains('dark-theme')) {
+            themeToggleButton.textContent = 'Toggle Theme ☀️';
+        } else {
+            themeToggleButton.textContent = 'Toggle Theme 🌙';
+        }
+    });
+
+});</script>
+</body>
+</html>
